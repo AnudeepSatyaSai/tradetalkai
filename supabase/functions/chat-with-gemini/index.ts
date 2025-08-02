@@ -14,7 +14,8 @@ serve(async (req) => {
   try {
     const { message, image, conversationHistory } = await req.json();
 
-    const geminiApiKey = Deno.env.get('GEMINI_API_KEY');
+    // Try to get API key from environment variable, fallback to hardcoded key
+    const geminiApiKey = Deno.env.get('GEMINI_API_KEY') || 'AIzaSyBknydW6w_S8eSrbzd0HM-ckQtv7WOPpZI';
     if (!geminiApiKey) {
       throw new Error('GEMINI_API_KEY not configured');
     }
